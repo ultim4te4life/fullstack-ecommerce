@@ -2,11 +2,11 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
-import productsdata from "../dummyData/ProductsData";
 import { useCartContext } from "../context/CartContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useLocation } from "react-router-dom";
+import "../ProductsPage.css"; // Import the CSS file
 
 function Products(props) {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -20,7 +20,7 @@ function Products(props) {
     }
   }, [location.search]);
   const { addProduct, loading, data } = useCartContext();
-  console.log(loading);
+  console.log(data);
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
   };
@@ -46,14 +46,7 @@ function Products(props) {
     <div>
       <Header user={props.user} darkMode={true} />
       <div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            marginLeft: "200px",
-            width: "100vw",
-          }}
-        >
+        <div className="container">
           <div className="category-list">
             <h2>Categories</h2>
             <ul>
@@ -80,56 +73,20 @@ function Products(props) {
               />
             </div>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              marginLeft: "20px",
-              marginTop: "30px",
-            }}
-            className="product-list"
-          >
+          <div className="product-list">
             {filteredProducts.map((product) => (
-              <div
-                style={{
-                  width: "300px", // Adjust width and margin as needed
-                  marginBottom: "20px",
-                  padding: "10px",
-                  border: "1px solid #ccc",
-                  borderRadius: "8px",
-                  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-                key={product.id}
-                className="product-card"
-              >
+              <div key={product.id} className="product-card">
                 <img
-                  style={{
-                    width: "190px",
-                    height: "257px",
-                    borderRadius: "8px",
-                    display: "block", // Center the image
-                    margin: "0 auto", //
-                  }}
+                  className="products-image"
                   src={product.imageUrl}
                   alt={product.name}
                 />
                 <h2>{product.name}</h2>
-                <p style={{ color: "black" }}>${product.price}</p>
-                <p
-                  style={{
-                    padding: "10px",
-                    backgroundColor: "#fff",
-                    borderRadius: "0 0 8px 8px",
-                    color: "black",
-                  }}
-                >
-                  {product.description}
-                </p>
+                <p className="product-price">${product.price}</p>
+                <p className="product-description">{product.description}</p>
 
                 <button
-                  style={{ marginLeft: "150px" }}
+                  className="add-to-cart-button"
                   disabled={loading}
                   onClick={(e) => {
                     handleAddcart(product);

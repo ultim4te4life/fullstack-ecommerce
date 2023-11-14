@@ -12,7 +12,7 @@ import { useCartContext } from "../context/CartContext";
 function Header(props) {
   const { calculateTotalQuantity } = useCartContext(); // Get the function to calculate total quantity
   const { user, darkMode } = props;
-
+  const isAdmin = user && user.email === "drbilguunt@gmail.com";
   const navigate = useNavigate();
   const handleLogin = () => {
     navigate("/sign-in");
@@ -90,9 +90,11 @@ function Header(props) {
           <span style={{ cursor: "pointer" }} onClick={handleProduct}>
             Products
           </span>
-          <span style={{ cursor: "pointer" }} onClick={handleAdmin}>
-            Admin
-          </span>
+          {isAdmin && (
+            <span style={{ cursor: "pointer" }} onClick={handleAdmin}>
+              Admin
+            </span>
+          )}
         </div>
         {user ? (
           <div

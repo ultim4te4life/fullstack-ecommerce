@@ -25,13 +25,7 @@ export const CartProvider = (props) => {
     phoneNumber: "",
   });
 
-  useEffect(() => {
-    const getData = async () => {
-      console.log("hello");
-    };
-    return () => getData();
-  }, []);
-
+  console.log(data);
   useEffect(() => {
     const getData = auth.onAuthStateChanged(async (user) => {
       setLoading(true);
@@ -50,6 +44,7 @@ export const CartProvider = (props) => {
               phoneNumber: userData.phoneNumber || "",
             });
             const userCart = userData.cart || [];
+            console.log(userCart);
             setProducts(userCart);
           }
           onSnapshot(productsCollection, (collection) => {
@@ -57,6 +52,7 @@ export const CartProvider = (props) => {
               return doc.data();
             });
             setData(firebaseDocData);
+            console.log(firebaseDocData);
             setLoading(false);
           });
         } catch (error) {

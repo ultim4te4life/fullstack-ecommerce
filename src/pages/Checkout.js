@@ -14,79 +14,7 @@ import {
 import { database, auth } from "../firebase/firebase"; // Adjust import based on your actual setup
 import { useEffect, useState } from "react";
 import StripePayment from "../components/StripePayment";
-
-const containerStyle = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "flex-start",
-  padding: "20px",
-};
-
-const summaryStyle = {
-  flex: "1",
-  border: "1px solid #ccc",
-  padding: "20px",
-  borderRadius: "8px",
-  marginRight: "20px",
-};
-
-const orderItemsStyle = {
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px",
-};
-
-const orderItemStyle = {
-  display: "flex",
-  alignItems: "center",
-  gap: "20px",
-};
-
-const itemDetailsStyle = {
-  flex: "1",
-};
-
-const formStyle = {
-  flex: "1",
-  border: "1px solid #ccc",
-  padding: "20px",
-  borderRadius: "8px",
-};
-
-const formGroupStyle = {
-  marginBottom: "20px",
-};
-
-const inputStyle = {
-  width: "100%",
-  padding: "10px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-};
-
-const textareaStyle = {
-  width: "100%",
-  padding: "10px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-};
-
-const selectStyle = {
-  width: "100%",
-  padding: "10px",
-  border: "1px solid #ccc",
-  borderRadius: "4px",
-};
-
-const buttonStyle = {
-  backgroundColor: "#007bff",
-  color: "#fff",
-  border: "none",
-  borderRadius: "4px",
-  padding: "10px 20px",
-  cursor: "pointer",
-  fontSize: "16px",
-};
+import "../Checkout.css";
 
 const notifyAddToCart = (productName) => {
   toast.success(`Added ${productName} to the cart!`, {
@@ -213,23 +141,19 @@ const Checkout = (props) => {
   return (
     <div>
       <Header user={props.user} />
-      <div style={containerStyle} className="checkout-container">
-        <div style={summaryStyle} className="checkout-summary">
+      <div className="checkout-container">
+        <div className="checkout-summary">
           <h2>Order Summary</h2>
           {products && products.length > 0 ? (
-            <div style={orderItemsStyle} className="order-items">
+            <div className="order-items">
               {products.map((product) => (
-                <div
-                  style={orderItemStyle}
-                  className="order-item"
-                  key={product.id}
-                >
+                <div className="order-item" key={product.id}>
                   <img
                     src={product.imageUrl}
                     alt={product.name}
                     style={{ width: "100px", height: "150px" }}
                   />
-                  <div style={itemDetailsStyle} className="item-details">
+                  <div className="item-details">
                     <h3>{product.name}</h3>
                     <p>Price: ${product.price}</p>
                     <p>Quantity: {product.quantity}</p>
@@ -265,72 +189,63 @@ const Checkout = (props) => {
             <p>Total: ${calculateTotalPrice().toFixed(2)}</p>
           </div>
         </div>
-        <div style={formStyle} className="checkout-form">
+        <div className="checkout-form">
           {editMode ? ( // If in edit mode, show address fields
             <div>
               <h2>Shipping Information</h2>
               <form>
-                <div style={formGroupStyle} className="form-group">
+                <div className="form-group">
                   <label>Street address:</label>
                   <input
                     type="text"
-                    style={inputStyle}
                     placeholder="Enter your street address"
                     name="streetAddress"
                     value={shippingAddress.streetAddress}
                     onChange={handleChangeAddress}
                   />
                 </div>
-                <div style={formGroupStyle} className="form-group">
+                <div className="form-group">
                   <label>City:</label>
                   <input
                     type="text"
-                    style={inputStyle}
                     placeholder="Enter your city"
                     name="city"
                     value={shippingAddress.city}
                     onChange={handleChangeAddress}
                   />
                 </div>
-                <div style={formGroupStyle} className="form-group">
+                <div className="form-group">
                   <label>State, territory, or military post:</label>
                   <input
                     type="text"
-                    style={inputStyle}
                     placeholder="Enter your state or territory"
                     name="state"
                     value={shippingAddress.state}
                     onChange={handleChangeAddress}
                   />
                 </div>
-                <div style={formGroupStyle} className="form-group">
+                <div className="form-group">
                   <label>ZIP code:</label>
                   <input
                     type="text"
-                    style={inputStyle}
                     placeholder="Enter your ZIP code"
                     name="zipCode"
                     value={shippingAddress.zipCode}
                     onChange={handleChangeAddress}
                   />
                 </div>
-                <div style={formGroupStyle} className="form-group">
+                <div className="form-group">
                   <label>Phone Number:</label>
                   <input
                     type="tel"
-                    style={inputStyle}
                     placeholder="Enter your phone number"
                     name="phoneNumber"
                     value={shippingAddress.phoneNumber}
                     onChange={handleChangeAddress}
                   />
                 </div>
-                <div style={formGroupStyle} className="form-group">
-                  <button
-                    type="button"
-                    style={buttonStyle}
-                    onClick={handleSaveAddress}
-                  >
+                <div className="form-group">
+                  <button type="button" onClick={handleSaveAddress}>
                     Save address
                   </button>
                 </div>

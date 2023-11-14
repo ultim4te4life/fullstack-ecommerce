@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import ProductsData from "../dummyData/ProductsData"; // Import your product data
 import { useLocation, Link, Outlet, useNavigate } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 function Sidescroll2() {
