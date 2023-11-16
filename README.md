@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://ecommerce-react-47db0.web.app/">
-    <img src="/Users/admin/Desktop/classfolder/level2/login-app/my-app/src/images/Screen Shot 2023-11-13 at 7.39.44 PM.png" alt="home" width="800">
+    <img src="https://firebasestorage.googleapis.com/v0/b/ecommerce-react-47db0.appspot.com/o/image%2FScreen%20Shot%202023-11-13%20at%207.39.44%20PM.png?alt=media&token=8216c953-eebb-44ac-bc81-da6fabc12705" alt="home" width="800">
   </a>
 </p>
 
@@ -32,10 +32,6 @@ Explore our diverse product catalog and enjoy a seamless shopping experience. Yo
 - **Secure Transactions:**
 
   - Built-in security measures to ensure a safe shopping environment.
-
-- **Responsive Design:**
-
-  - Enjoy a consistent experience across various devices.
 
 ## Security Measures 🔒
 
